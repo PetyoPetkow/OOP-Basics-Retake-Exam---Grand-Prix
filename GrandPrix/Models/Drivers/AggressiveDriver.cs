@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class AgressiveDriver : Driver
+    public class AggressiveDriver : Driver
     {
-        public AgressiveDriver(string name, double totalTime, Car car)
-            :base(name, totalTime, car)
+        public AggressiveDriver(string name, Car car)
+            :base(name, car)
         {
             this.FuelConsumptionPerKm = 2.7;
             this.Speed *= 1.3;

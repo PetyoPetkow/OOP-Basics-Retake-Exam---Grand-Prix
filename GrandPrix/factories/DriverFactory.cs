@@ -6,13 +6,21 @@
 
     using GrandPrix.Models;
     using GrandPrix.Models.Drivers;
+    using GrandPrix.Models.Tyres;
+
     public class DriverFactory
     {
+        private TyreFactory tyreFactory;
+
+        public DriverFactory()
+        {
+            this.tyreFactory = new TyreFactory();
+        }
+
         public Driver Create(List<string> commandArgs)
         {
             Driver driver = null;
             Car car = null;
-            
 
             string type = commandArgs[0];
             string name = commandArgs[1];
@@ -23,20 +31,33 @@
             double grip = double.Parse(commandArgs[6]);
 
             List<string> tyreArgs = new List<string>();
-            tyreArgs.AddRange(tyreType, tyreHardness, grip);
+            tyreArgs.Clear();
+
+            tyreArgs.Add(tyreType);
+            tyreArgs.Add(tyreHardness.ToString());
+            tyreArgs.Add(grip.ToString());
 
             switch (type)
             {
+                
                 case "Aggressive":
-                    if (tyreType=="Hard")
-                    {
-                        TyreFactory();
-                        car = new Car(hp, fuelAmount, )
-                    driver = new AggressiveDriver(name, totalTime, car);
-                    }
-                    
+
+                    Tyre tyre = tyreFactory.Create(tyreArgs);
+
+                    car = new Car(hp, fuelAmount, tyre);
+                    driver = new AggressiveDriver(name, car);
+
+                    break;
+                case "Endurance":
+
+                    tyre = tyreFactory.Create(tyreArgs);
+
+                    car = new Car(hp, fuelAmount, tyre);
+                    driver = new AggressiveDriver(name, car);
+
                     break;
             }
+            return driver;
         }
     }
 }

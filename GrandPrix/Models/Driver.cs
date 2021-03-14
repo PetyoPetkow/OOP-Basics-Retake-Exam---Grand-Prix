@@ -7,10 +7,9 @@
     public abstract class Driver
     {
         private double speed;
-        protected Driver(string name, double totalTime, Car car)
+        protected Driver(string name, Car car)
         {
             this.Name = name;
-            this.TotalTime = totalTime;
             this.Car = car;
             this.Speed = (Car.Hp + Car.Tyre.Degradation) / Car.FuelAmount;
         }

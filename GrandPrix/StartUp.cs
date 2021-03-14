@@ -1,12 +1,12 @@
 ﻿namespace GrandPrix
 {
-    using System;
+    using GrandPrix.Controllers;
 
     public class StartUp
     {
         static void Main()
         {
-            
+            Engine.Run();
         }
     }
 }
