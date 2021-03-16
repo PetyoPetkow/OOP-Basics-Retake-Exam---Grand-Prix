@@ -1,33 +1,20 @@
 ﻿namespace GrandPrix.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public abstract class Driver
     {
-        private double speed;
-        protected Driver(string name, Car car)
+        protected Driver(string name, Car car, double fuelConsumptionPerKm)
         {
             this.Name = name;
             this.Car = car;
-            this.Speed = (Car.Hp + Car.Tyre.Degradation) / Car.FuelAmount;
+            this.FuelConsumptionPerKm = fuelConsumptionPerKm;
+            this.TotalTime = 0;
         }
 
         public string Name { get; set; }
-        public double TotalTime { get; set; }
         public Car Car { get; set; }
         public double FuelConsumptionPerKm { get; set; }
-        public double Speed 
-        {
-            get
-            {
-                return speed;
-            }
-            set
-            {
-                speed = (Car.Hp + Car.Tyre.Degradation) / Car.FuelAmount;
-            }
-        }
+        public double TotalTime { get; set; }
+        public virtual double Speed => (this.Car.Hp + this.Car.Tyre.Degradation) / this.Car.FuelAmount;
+        
     }
 }

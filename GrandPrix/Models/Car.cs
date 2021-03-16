@@ -1,15 +1,13 @@
 ﻿namespace GrandPrix.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using GrandPrix.Models.Tyres;
 
     public class Car
     {
-        const double MAX_FUEL_AMOUNT = 160;
+        private const double MAX_FUEL_AMOUNT = 160;
 
-        const string NO_FUEL_ERROR = "The fuel tank is empty!";
+        private const string NO_FUEL_ERROR = "The fuel tank is empty!";
 
         private double fuelAmount;
 
@@ -18,6 +16,7 @@
             this.Hp =hp;
             this.FuelAmount = fuelAmount;
             this.Tyre = tyre;
+            
         }
 
         public int Hp { get; set; }
@@ -35,7 +34,7 @@
                 }
                 else if (value<0)
                 {
-                    throw new ArgumentException(NO_FUEL_ERROR);
+                    //throw new ArgumentException(NO_FUEL_ERROR);
                 }
                 else
                 {
@@ -45,5 +44,9 @@
         }
         public Tyre Tyre { get; set; }
 
+        public void Refill(double fuelRefillAmount)
+        {
+            FuelAmount += fuelRefillAmount;
+        }
     }
 }

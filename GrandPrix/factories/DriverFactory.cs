@@ -1,8 +1,6 @@
 ﻿namespace GrandPrix.factories
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     using GrandPrix.Models;
     using GrandPrix.Models.Drivers;
@@ -21,39 +19,49 @@
         {
             Driver driver = null;
             Car car = null;
+            Tyre tyre = null;
+            List<string> tyreArgs = new List<string>();
 
+            double grip;
             string type = commandArgs[0];
             string name = commandArgs[1];
             int hp = int.Parse(commandArgs[2]);
             double fuelAmount = double.Parse(commandArgs[3]);
             string tyreType = commandArgs[4];
             double tyreHardness = double.Parse(commandArgs[5]);
-            double grip = double.Parse(commandArgs[6]);
 
-            List<string> tyreArgs = new List<string>();
-            tyreArgs.Clear();
+            
 
+            
             tyreArgs.Add(tyreType);
             tyreArgs.Add(tyreHardness.ToString());
-            tyreArgs.Add(grip.ToString());
+
+            if (commandArgs.Count > 6)
+            {
+                grip = double.Parse(commandArgs[6]);
+                tyreArgs.Add(grip.ToString());
+            }
+
+            tyre = tyreFactory.Create(tyreArgs);
+            tyreArgs.Clear();
 
             switch (type)
             {
                 
                 case "Aggressive":
 
-                    Tyre tyre = tyreFactory.Create(tyreArgs);
-
+                    
+                    
                     car = new Car(hp, fuelAmount, tyre);
                     driver = new AggressiveDriver(name, car);
 
                     break;
                 case "Endurance":
 
-                    tyre = tyreFactory.Create(tyreArgs);
-
+                    //tyre = tyreFactory.Create(tyreArgs);
+                    //tyres.Add(tyre);
                     car = new Car(hp, fuelAmount, tyre);
-                    driver = new AggressiveDriver(name, car);
+                    driver = new EnduranceDriver(name, car);
 
                     break;
             }

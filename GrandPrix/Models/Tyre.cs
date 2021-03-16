@@ -1,20 +1,16 @@
 ﻿namespace GrandPrix.Models.Tyres
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public abstract class Tyre
     {
-
         protected Tyre(double hardness)
         {
             this.Hardness = hardness;
-            this.Degradation = 100;
         }
 
-        public string Name { get; set; }
+        public abstract string Name { get; }
         public double Hardness { get; set; }
-        public double Degradation { get; set; }
+        public double Degradation { get; set; } = 100;
+        public virtual double Grip { get; set; }
+
     }
 }

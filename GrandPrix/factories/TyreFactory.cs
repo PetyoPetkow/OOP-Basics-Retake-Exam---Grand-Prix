@@ -1,8 +1,6 @@
 ﻿namespace GrandPrix.factories
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     using GrandPrix.Models.Tyres;
 
@@ -14,13 +12,15 @@
 
             string name = commandArgs[0];
             double hardness = double.Parse(commandArgs[1]);
-            double grip = double.Parse(commandArgs[2]);
+            double grip;
 
             switch (name)
             {
                 case "Hard": tyre = new HardTyre(hardness); break;
-                case "Ultrasoft": tyre = new UltrasoftTyre(hardness, grip); break;
+                case "Ultrasoft": grip = double.Parse(commandArgs[2]); tyre = new UltrasoftTyre(hardness, grip); break;
+                    
             }
+            
             return tyre;
         }
     }

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     public static class Engine
     {
@@ -14,9 +13,10 @@
             raceTower.SetTrackInfo(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
 
             string result = string.Empty;
-
-            while (true)
+            string IsNotFinished = null;
+            while (IsNotFinished!="The race finished!")
             {
+                
                 string input = Console.ReadLine();
                 List<string> commandArgs = input.Split().ToList();
 
@@ -34,6 +34,8 @@
                     case "Overtaking": break;
                 }
                 Console.WriteLine(result);
+                IsNotFinished = result;
+                result = string.Empty;
             }
 
         }

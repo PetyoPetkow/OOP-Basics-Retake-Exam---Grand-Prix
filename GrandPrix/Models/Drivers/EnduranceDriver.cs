@@ -1,19 +1,13 @@
 ﻿namespace GrandPrix.Models.Drivers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public class EnduranceDriver : Driver
     {
-        private double fuelConsumptionPerKm;
+        private const double ENDURANCE_DRIVER_FUEL_CONSUMPTION = 1.5;
 
         public EnduranceDriver(string name, Car car)
-            : base(name, car)
+            : base(name, car, ENDURANCE_DRIVER_FUEL_CONSUMPTION)
         {
-            this.FuelConsumptionPerKm = 1.5;
         }
 
-        public new double FuelConsumptionPerKm { get; }
     }
 }
