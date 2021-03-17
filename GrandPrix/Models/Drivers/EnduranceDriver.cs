@@ -8,6 +8,5 @@
             : base(name, car, ENDURANCE_DRIVER_FUEL_CONSUMPTION)
         {
         }
-
     }
 }

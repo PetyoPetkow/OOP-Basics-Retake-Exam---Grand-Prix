@@ -30,9 +30,6 @@
             string tyreType = commandArgs[4];
             double tyreHardness = double.Parse(commandArgs[5]);
 
-            
-
-            
             tyreArgs.Add(tyreType);
             tyreArgs.Add(tyreHardness.ToString());
 
@@ -47,22 +44,13 @@
 
             switch (type)
             {
-                
                 case "Aggressive":
-
-                    
-                    
                     car = new Car(hp, fuelAmount, tyre);
                     driver = new AggressiveDriver(name, car);
-
                     break;
                 case "Endurance":
-
-                    //tyre = tyreFactory.Create(tyreArgs);
-                    //tyres.Add(tyre);
                     car = new Car(hp, fuelAmount, tyre);
                     driver = new EnduranceDriver(name, car);
-
                     break;
             }
             return driver;

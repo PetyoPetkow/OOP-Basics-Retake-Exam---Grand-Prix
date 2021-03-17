@@ -11,7 +11,5 @@
         }
 
         public override double Speed => base.Speed * AGRESSIVE_DRIVER_SPEED;
-        
-
     }
 }

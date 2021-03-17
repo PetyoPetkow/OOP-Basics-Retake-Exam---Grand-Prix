@@ -11,12 +11,10 @@
             var raceTower = new RaceTower();
 
             raceTower.SetTrackInfo(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
-
-            string result = string.Empty;
-            string IsNotFinished = null;
-            while (IsNotFinished!="The race finished!")
+           
+            while (raceTower.isNotFinished)
             {
-                
+                string result = string.Empty;
                 string input = Console.ReadLine();
                 List<string> commandArgs = input.Split().ToList();
 
@@ -33,11 +31,11 @@
                     case "DNF": break;
                     case "Overtaking": break;
                 }
-                Console.WriteLine(result);
-                IsNotFinished = result;
-                result = string.Empty;
+                if (result!=string.Empty)
+                {
+                    Console.WriteLine(result);
+                }
             }
-
         }
     }
 }
