@@ -10,7 +10,10 @@
         {
             var raceTower = new RaceTower();
 
-            raceTower.SetTrackInfo(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
+            int lapsNumber = int.Parse(Console.ReadLine());
+            int trackLength = int.Parse(Console.ReadLine());
+
+            raceTower.SetTrackInfo(lapsNumber, trackLength);
            
             while (raceTower.isNotFinished)
             {

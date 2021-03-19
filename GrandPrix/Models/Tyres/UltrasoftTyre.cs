@@ -35,6 +35,7 @@ namespace GrandPrix.Models.Tyres
             }
         }
         public override double Grip { get; set; }
+
         public override string Name => "UltraSoft";
     }
 }

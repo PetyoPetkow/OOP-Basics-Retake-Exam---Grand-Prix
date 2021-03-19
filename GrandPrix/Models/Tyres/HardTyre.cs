@@ -31,6 +31,7 @@ namespace GrandPrix.Models.Tyres
                 }
             }
         }
+
         public override string Name => "Hard";
     }
 }

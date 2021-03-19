@@ -9,8 +9,11 @@
         }
 
         public abstract string Name { get; }
+
         public double Hardness { get; set; }
+
         public virtual double Degradation { get; set; }
+
         public virtual double Grip { get; set; }
     }
 }

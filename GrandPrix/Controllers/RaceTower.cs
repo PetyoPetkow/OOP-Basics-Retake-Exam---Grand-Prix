@@ -118,16 +118,13 @@
 
                         try
                         {
-                            driver.TotalTime += 60 / (trackLength / driver.Speed);
-                            driver.Car.FuelAmount -= trackLength * driver.FuelConsumptionPerKm;
-                            driver.Car.Tyre.Degradation -= driver.Car.Tyre.Hardness + driver.Car.Tyre.Grip;
+                            TakeALap(driver);
                         }
                         catch (ArgumentException ae)
                         {
                             try
                             {
                                 dnfDriver.Add(driver, ae.Message);
-                                //Console.WriteLine($"{driver.Name} {ae.Message}");
                             }
                             catch (Exception)
                             {
@@ -144,7 +141,9 @@
                 {
                     for (int i = 0; i < drivers.Count; i++)
                     {
-                        if (dnfDriver.Keys.FirstOrDefault().Name == drivers[i].Name)
+                        string driverToBeRemoved = dnfDriver.Keys.FirstOrDefault().Name;
+
+                        if (driverToBeRemoved == drivers[i].Name)
                         {
                             drivers.Remove(drivers[i]);
                         }
@@ -212,6 +211,13 @@
                 result = true;
             }
             return result;
+        }
+
+        public void TakeALap(Driver driver)
+        {
+            driver.TotalTime += 60 / (trackLength / driver.Speed);
+            driver.Car.FuelAmount -= trackLength * driver.FuelConsumptionPerKm;
+            driver.Car.Tyre.Degradation -= driver.Car.Tyre.Hardness + driver.Car.Tyre.Grip;
         }
     }
 }

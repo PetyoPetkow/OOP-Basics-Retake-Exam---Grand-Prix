@@ -20,6 +20,7 @@
         }
 
         public int Hp { get; set; }
+
         public double FuelAmount 
         {
             get
@@ -46,7 +47,7 @@
 
         public void Refill(double fuelRefillAmount)
         {
-            FuelAmount += fuelRefillAmount;
+            this.FuelAmount += fuelRefillAmount;
         }
     }
 }
